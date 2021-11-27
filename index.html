@@ -192,7 +192,11 @@
         </div>
         <div class="row justify-content-center">
           <div class="col-md-6">
-            <form>
+            <div class="alert alert-success alert-dismissible fade show d-none my-alert" role="alert">
+              <strong>Terima Kasih!</strong> Pesan mu sudah Ayel Terima Yaa :)
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <form name="ayel-contact-form">
               <div class="mb-3">
                 <label for="email" class="form-label">Alamat Email</label>
                 <input
@@ -201,6 +205,7 @@
                   id="email"
                   aria-describedby="emailHelp"
                   placeholder="Masukkan Email kamu"
+                  name="email"
                 />
 
                 <label for="Nama" class="form-label">Nama</label>
@@ -210,14 +215,19 @@
                   id="Nama"
                   aria-describedby="emailHelp"
                   placeholder="Masukkan Nama Lengkap"
+                  name="nama"
                 />
                 <label for="comments">Comments</label>
                 <div class="mb-3 ">
-                  <textarea class="form-control" placeholder="Leave a comment here" id="comment" style="height: 100px"></textarea>
+                  <textarea class="form-control" placeholder="Leave a comment here" id="comment" style="height: 100px" name="pesan"></textarea>
                   
                 </div>
 
-              <button type="submit" class="btn btn-success">Kirim</button>
+              <button type="submit" class="btn btn-primary btn-kirim">Kirim</button>
+              <button class="btn btn-primary btn-loading d-none" type="button" disabled>
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Loading...
+              </button>
             </form>
           </div>
         </div>
@@ -239,5 +249,40 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
+
+    <form name="submit-to-google-sheet">
+      
+    </form>
+    
+    <script>
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbxmVPQKhW0QQzWFcxAo7Hk9tXQz1shaHe8jWccfPH1sxE-4xH7YgVykZCi9kY5u0kfQ/exec'
+      const form = document.forms['ayel-contact-form'];
+      const btnKirim = document.querySelector('.btn-kirim');
+      const btnLoading = document.querySelector('.btn-loading');
+      const myAlert =document.querySelector('.my-alert')
+    
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+
+        // ketika tombol submit diklik
+        // tampilan tombol loading , hilangkan tombol kirim
+        btnLoading.classList.toggle('d-none');
+        btnKirim.classList.toggle('d-none');
+
+        // tampilkan tombol Kirim , Hilangkan tombol Loading
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+          .then(response => {
+            btnLoading.classList.toggle('d-none');
+            btnKirim.classList.toggle('d-none');
+            // tampilkan Alert
+            myAlert.classList.toggle('d-none');
+            // reset form
+            form.reset();
+            console.log('Success!', response)
+          })
+          .catch(error => console.error('Error!', error.message))
+      })
+    </script>
+    
   </body>
 </html>
