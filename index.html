@@ -17,6 +17,7 @@
     />
 
     <link rel="stylesheet" href="style.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <title>Welcome to Ayel World</title>
   </head>
@@ -79,20 +80,20 @@
 
     <!-- about -->
     <section id="about">
-      <div class="container">
+      <div class="container pb-md-5 pt-lg-5">
         <div class="row text-center mb-4">
           <div class="col">
             <h2>About Ayel</h2>
           </div>
         </div>
         <div class="row justify-content-center fs-5 text-center">
-          <div class="col-md-4">
+          <div class="col-md-4" data-aos="fade-right" data-aos-duration="500">
             <p>
               Halo , Namaku Garland Abhirath Kamayel dan biasa dipanggila Ayel. Umurku 7 Bulan.
 
             </p>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4" data-aos="fade-left" data-aos-duration="500" data-aos-delay="300">
             <p>
               Saat ini aku lagi belajar berdiri,dan mau cepat bisa berjalan. Agar bisa diajak mama papa Jalan Jalan lagi.
             </p>
@@ -118,7 +119,7 @@
           </div>
         </div>
         <div class="row justify-content-center" >
-          <div class="col-md-2 mb-3">
+          <div class="col-md-2 mb-3" data-aos="flip-right" data-aos-duration="500">
             <div class="card";>
               <img src="img/foto/ayel1.jpg" class="card-img-top" alt="ayel1" />
               <div class="card-body">
@@ -128,7 +129,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-2 mb-3">
+          <div class="col-md-2 mb-3" data-aos="flip-right" data-aos-duration="500" data-aos-delay="100">
             <div class="card";>
               <img src="img/foto/ayel2.jpg" class="card-img-top" alt="ayel2" />
               <div class="card-body">
@@ -138,7 +139,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-2 mb-3">
+          <div class="col-md-2 mb-3" data-aos="flip-right" data-aos-duration="500" data-aos-delay="150">
             <div class="card";>
               <img src="img/foto/ayel3.jpg" class="card-img-top" alt="ayel3" />
               <div class="card-body">
@@ -149,7 +150,7 @@
             </div>
           </div>
           <div class="row justify-content-center">
-            <div class="col-md-2 mb-3">
+            <div class="col-md-2 mb-3" data-aos="flip-right" data-aos-duration="500" data-aos-delay="200">
               <div class="card";>
                 <img src="img/foto/ayel4.jpg" class="card-img-top" alt="ayel4" />
                 <div class="card-body">
@@ -159,7 +160,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-2 mb-3">
+            <div class="col-md-2 mb-3" data-aos="fade-right" data-aos-duration="500" data-aos-delay="250">
               <div class="card";>
                 <img src="img/foto/ayel5.jpg" class="card-img-top" alt="ayel5" />
                 <div class="card-body">
@@ -181,6 +182,7 @@
       </svg>
     </section>
     <!-- End My Photo -->
+
 
     <!-- Contact Me -->
     <section id="contact">
@@ -283,6 +285,16 @@
           .catch(error => console.error('Error!', error.message))
       })
     </script>
-    
+
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        once : true,
+        duration : 2000,
+        
+      });
+    </script>
+    <!-- End AOS -->
   </body>
 </html>
